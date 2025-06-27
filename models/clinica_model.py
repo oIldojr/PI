@@ -23,17 +23,17 @@ class Clinica:
 
              valores = (self.nome, self.cnpj, self.telefone,self.id)
 
+        conn.commit()
+        cursor.close()
+        conn.close()
+
     def deletar(self):
         if self.id is not None:
             conn = conectar()
             cursor = conn.cursor()
             cursor.execute("DELETE FROM clinica WHERE id = %s",(self.id))    
             conn.commit()
-            cursor.close()
-            conn.close
 
-    cursor.execute(sql, valores)
-    conn.commit()
+        cursor.close()
+        conn.close()
 
-    cursor.close()
-    conn.close()

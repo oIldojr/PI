@@ -27,9 +27,43 @@ class Agendamento:
 
              valores = (self.data_agendamento,self.hora_agendamento,self.status,self.id_cliente,self.id_medico)
 
-             
-    cursor.execute(sql, valores)
-    conn.commit()
+        conn.commit()
+        cursor.close()
+        conn.close()
 
-    cursor.close()
-    conn.close()
+    @staticmethod
+    def buscar_todos():
+            conn = conectar 
+            cursor = conn.cursor(dictionary=True)
+
+            cursor.execute("SELECT * FROM agendamento")
+            resultados = cursor.fetchall()
+
+            cursor.close()
+            conn.close()
+            return[Agendamento(**r) for r in resultados]
+
+    @staticmethod
+    def buscar_por_id(id):
+        conn = conectar()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT * FROM agendamento WHERE id = %s",(id,))
+        resultado = cursor.fetchone()
+
+        cursor.close()
+        conn.close()
+
+    
+    def deletar(self):
+            if self.id is not None:
+                conn = conectar()
+                cursor = conn.cursor()
+                cursor.execute("DELETE FROM agendamento WHERE id = %s",(self.id))    
+                conn.commit()
+
+            cursor.close()
+            conn.close()
+
+             
+   

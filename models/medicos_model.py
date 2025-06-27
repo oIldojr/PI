@@ -25,6 +25,11 @@ class Medico:
 
              valores = (self.nome, self.email, self.especialidade, self.telefone,self.id)
 
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+
      @staticmethod
     def buscar_todos():
             conn = conectar 
@@ -42,10 +47,10 @@ class Medico:
         conn = conectar()
         cursor = conn.cursor(dictionary=True)
 
-        cursor.execute("SELECT * FROM medicos WHERE id = %s"(id))
+        cursor.execute("SELECT * FROM medicos WHERE id = %s",(id,))
         resultado = cursor.fetchone()
 
-        cursor.close
+        cursor.close()
         conn.close()
 
      
@@ -55,14 +60,9 @@ class Medico:
                 cursor = conn.cursor()
                 cursor.execute("DELETE FROM medicos WHERE id = %s",(self.id))    
                 conn.commit()
-                cursor.close()
+            cursor.close()
                 conn.close
              
     
 
-             
-    cursor.execute(sql, valores)
-    conn.commit()
-
-    cursor.close()
-    conn.close()
+    

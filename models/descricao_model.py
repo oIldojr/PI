@@ -24,7 +24,11 @@ class Descricao:
 
              valores = (self.descricao_atendimento,self,sintomas,self.observacoes,self.id)
 
-     @staticmethod
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+    @staticmethod
     def buscar_todos():
             conn = conectar 
             cursor = conn.cursor(dictionary=True)
@@ -36,31 +40,27 @@ class Descricao:
             conn.close
             return[Descricao(**r) for r in resultados]
 
-     @staticmethod
-     def buscar_por_id(id):
+    @staticmethod
+    def buscar_por_id(id):
         conn = conectar()
         cursor = conn.cursor(dictionary=True)
 
-        cursor.execute("SELECT * FROM descricao_atendimento WHERE id = %s"(id))
+        cursor.execute("SELECT * FROM descricao_atendimento WHERE id = %s",(id,))
         resultado = cursor.fetchone()
 
-        cursor.close
+        cursor.close()
         conn.close()
 
      
-     def deletar(self):
+    def deletar(self):
             if self.id is not None:
                 conn = conectar()
                 cursor = conn.cursor()
                 cursor.execute("DELETE FROM descricao_atendimento WHERE id = %s",(self.id))    
                 conn.commit()
-                cursor.close()
-                conn.close
+            cursor.close()
+            conn.close()
              
 
     
-    cursor.execute(sql, valores)
-    conn.commit()
-
-    cursor.close()
-    conn.close()
+   
