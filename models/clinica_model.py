@@ -19,7 +19,7 @@ class Clinica:
             valores = (self.nome, self.cnpj, self.telefone)
 
         else:
-             sql = "UPDATE cnpj SET nome=%s, cnpj=%s,telefone=%s WHERE id=%s)"
+             sql = "UPDATE clinica SET nome=%s, cnpj=%s,telefone=%s WHERE id=%s)"
 
              valores = (self.nome, self.cnpj, self.telefone,self.id)
 
@@ -27,7 +27,7 @@ class Clinica:
         if self.id is not None:
             conn = conectar()
             cursor = conn.cursor()
-            cursor.execute("DELETE FROM clientes WHERE id = %s",(self.id))    
+            cursor.execute("DELETE FROM clinica WHERE id = %s",(self.id))    
             conn.commit()
             cursor.close()
             conn.close
