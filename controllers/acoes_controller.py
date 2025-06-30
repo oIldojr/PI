@@ -6,7 +6,6 @@ class AcoesController:
         self.view = TelaAcoes(self)
 
     def iniciar_tela(self):
-        print('chegou aqui')
         self.view.mostrar()
 
     def abrir_cadastro_cliente(self):
