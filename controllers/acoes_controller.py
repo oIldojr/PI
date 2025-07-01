@@ -11,7 +11,7 @@ class AcoesController:
         self.view.mostrar()
 
     def abrir_cadastro_cliente(self):
-        cliente_controller = ClienteController(self.root)
+        cliente_controller = ClienteController()
         tela_cadastro_cliente = TelaCadastroCliente(cliente_controller, self.root)
         self.root.withdraw()  
         tela_cadastro_cliente.mostrar() 

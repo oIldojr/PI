@@ -48,12 +48,15 @@ class Cliente:
         conn = conectBD()
         cursor = conn.cursor(dictionary=True)
 
-        cursor.execute("SELECT * FROM clientes WHERE id = %s",(id,))
+        cursor.execute("SELECT * FROM clientes WHERE id = %s", (id,))
         resultado = cursor.fetchone()
 
         cursor.close()
         conn.close()
 
+        if resultado:
+            return Cliente(**resultado)
+        return None
     
     def deletar(self):
             if self.id is not None:

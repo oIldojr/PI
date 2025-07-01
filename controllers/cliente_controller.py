@@ -7,7 +7,7 @@ class ClienteController:
         return cliente
 
     def listar_clientes(self):
-        return cliente.buscar_todos()
+        return Cliente.buscar_todos()
 
     def atualizar_cliente(self,id,nome,email,data_nascimento,telefone):
         cliente = Cliente(nome,email,data_nascimento,telefone,id)
@@ -22,4 +22,4 @@ class ClienteController:
         return False 
 
     def validar_email(self,email):
-        return "@" in email and "." in emails
+        return "@" in email and "." in email
