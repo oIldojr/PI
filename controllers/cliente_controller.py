@@ -1,17 +1,17 @@
-from models.cliente import Cliente 
+from models.cliente_model import Cliente 
 
 class ClienteController:
-    def cadastrar_cliente(self,nome,email,telefone,data_nascimento):
-        cliente = Cliente(nome,email,telefone,data_nascimento)
-        cliente.salvar()
+    def cadastrar_cliente(self,nome,email,data_nascimento,telefone):
+        cliente = Cliente(nome,email,data_nascimento,telefone)
+        cliente.salvar_cliente()
         return cliente
 
     def listar_clientes(self):
-        return cliente.buscar_todos
+        return cliente.buscar_todos()
 
-    def atualizar_cliente(self,id,nome,email,telefone,data_nascimento)
-        cliente = Cliente(nome,email,telefone,data_nascimento,id)
-        cliente.salvar()
+    def atualizar_cliente(self,id,nome,email,data_nascimento,telefone):
+        cliente = Cliente(nome,email,data_nascimento,telefone,id)
+        cliente.salvar_cliente()
         return cliente
 
     def excluir_cliente(self,id):
@@ -22,4 +22,4 @@ class ClienteController:
         return False 
 
     def validar_email(self,email):
-        return "@" in email and "." in email
+        return "@" in email and "." in emails

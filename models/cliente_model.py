@@ -1,4 +1,4 @@
-from db import conectBD
+from models.db import conectBD
 
 class Cliente:
     def __init__(self,nome,email,data_nascimento,telefone,id = None):
@@ -21,10 +21,12 @@ class Cliente:
             valores = (self.nome, self.email, self.data_nascimento, self.telefone)
 
         else:
-             sql = "UPDATE clientes SET nome=%s, email=%s,data_nascimento=%s,telefone=%s WHERE id=%s)"
+             sql = "UPDATE clientes SET nome=%s, email=%s,data_nascimento=%s,telefone=%s WHERE id=%s"
 
              valores = (self.nome, self.email, self.data_nascimento, self.telefone,self.id)
 
+
+        cursor.execute(sql, valores)
         conn.commit()
         cursor.close()
         conn.close()
