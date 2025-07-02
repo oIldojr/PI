@@ -1,20 +1,26 @@
 from views.acoes_view import TelaAcoes
 from views.clientes_view import TelaCadastroCliente 
 from controllers.cliente_controller import ClienteController 
+import tkinter as tk
 
 class AcoesController:
     def __init__(self, root):
         self.root = root
-        self.view = TelaAcoes(self)
+        self.view = TelaAcoes(self.root, self)
 
     def iniciar_tela(self):
         self.view.mostrar()
 
     def abrir_cadastro_cliente(self):
-        cliente_controller = ClienteController()
-        tela_cadastro_cliente = TelaCadastroCliente(cliente_controller, self.root)
+        cadastro_window = tk.Toplevel(self.root)
+        cadastro_window.attributes('-fullscreen', True)
+        
+        controller = ClienteController(cadastro_window)
+        
+        cadastro_window.master = self.root 
         self.root.withdraw()  
-        tela_cadastro_cliente.mostrar() 
+    
+        controller.iniciar_tela()
 
     def abrir_cadastro_medico(self):
         pass
