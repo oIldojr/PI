@@ -10,7 +10,7 @@ class Descricao:
     def salvar_descricao(self):
     conn = conectBD()
     cursor = conn.cursor()
-
+    
         if self.id is None:
 
             sql = """
@@ -24,13 +24,13 @@ class Descricao:
 
              valores = (self.descricao_atendimento,self,sintomas,self.observacoes,self.id)
 
-        conn.commit()
-        cursor.close()
-        conn.close()
+    conn.commit()
+    cursor.close()
+    conn.close()
 
     @staticmethod
     def buscar_todos():
-            conn = conectar 
+            conn = conectBD()
             cursor = conn.cursor(dictionary=True)
 
             cursor.execute("SELECT * FROM descricao_atendimento")
@@ -42,7 +42,7 @@ class Descricao:
 
     @staticmethod
     def buscar_por_id(id):
-        conn = conectar()
+        conn = conectBD()
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute("SELECT * FROM descricao_atendimento WHERE id = %s",(id,))
@@ -54,10 +54,11 @@ class Descricao:
      
     def deletar(self):
             if self.id is not None:
-                conn = conectar()
+                conn = conectBD()
                 cursor = conn.cursor()
                 cursor.execute("DELETE FROM descricao_atendimento WHERE id = %s",(self.id))    
                 conn.commit()
+           
             cursor.close()
             conn.close()
              

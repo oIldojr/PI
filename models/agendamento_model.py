@@ -33,7 +33,7 @@ class Agendamento:
 
     @staticmethod
     def buscar_todos():
-            conn = conectar 
+            conn = conectBD()
             cursor = conn.cursor(dictionary=True)
 
             cursor.execute("SELECT * FROM agendamento")
@@ -45,7 +45,7 @@ class Agendamento:
 
     @staticmethod
     def buscar_por_id(id):
-        conn = conectar()
+        conn = conectBD()
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute("SELECT * FROM agendamento WHERE id = %s",(id,))
@@ -57,7 +57,7 @@ class Agendamento:
     
     def deletar(self):
             if self.id is not None:
-                conn = conectar()
+                conn = conectBD()
                 cursor = conn.cursor()
                 cursor.execute("DELETE FROM agendamento WHERE id = %s",(self.id))    
                 conn.commit()

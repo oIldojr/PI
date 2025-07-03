@@ -10,7 +10,7 @@ class Clinica:
     conn = conectBD()
     cursor = conn.cursor()
 
-       if self.id is None:
+        if self.id is None:
 
             sql = """
             INSERT INTO clinica (nome,cnpj,telefone)
@@ -23,13 +23,13 @@ class Clinica:
 
              valores = (self.nome, self.cnpj, self.telefone,self.id)
 
-        conn.commit()
-        cursor.close()
-        conn.close()
+    conn.commit()
+    cursor.close()
+    conn.close()
 
     def deletar(self):
         if self.id is not None:
-            conn = conectar()
+            conn =conectBD()
             cursor = conn.cursor()
             cursor.execute("DELETE FROM clinica WHERE id = %s",(self.id))    
             conn.commit()

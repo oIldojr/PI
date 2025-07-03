@@ -29,9 +29,9 @@ class Atendimento:
         cursor.close()
         conn.close()
 
-     @staticmethod
+    @staticmethod
     def buscar_todos():
-            conn = conectar 
+            conn = conectBD()
             cursor = conn.cursor(dictionary=True)
 
             cursor.execute("SELECT * FROM atendimento")
@@ -41,9 +41,9 @@ class Atendimento:
             conn.close
             return[Atendimento(**r) for r in resultados]
 
-     @staticmethod
+    @staticmethod
     def buscar_por_id(id):
-        conn = conectar()
+        conn = conectBD()
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute("SELECT * FROM atendimento WHERE id = %s",(id,))
@@ -55,7 +55,7 @@ class Atendimento:
     
     def deletar(self):
             if self.id is not None:
-                conn = conectar()
+                conn = conectBD()
                 cursor = conn.cursor()
                 cursor.execute("DELETE FROM atendimento WHERE id = %s",(self.id))    
                 conn.commit()

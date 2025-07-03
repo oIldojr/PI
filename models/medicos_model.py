@@ -1,4 +1,4 @@
-from db import conectBD
+from models.db import conectBD
 
 class Medico:
     def __init__(self,nome,email,especialidade,telefone,id = None):
@@ -14,11 +14,11 @@ class Medico:
 
         if self.id is None:
 
-            sql = """
+            sql = """"
             INSERT INTO medicos (nome, email,especialidade,telefone)
             VALUES (%s, %s, %s, %s)
             """
-            valores = (self.nome, self.email, self.especialidade, self.telefone)
+            valores = (self.nome, self.email, self.especialidade, self.telefone,self.id)
 
         else:
              sql = "UPDATE medicos SET nome=%s, email=%s,especialidade=%s,telefone=%s WHERE id=%s)"
@@ -30,9 +30,9 @@ class Medico:
         conn.close()
 
 
-     @staticmethod
+    @staticmethod
     def buscar_todos():
-            conn = conectar 
+            conn = conectBD()
             cursor = conn.cursor(dictionary=True)
 
             cursor.execute("SELECT * FROM medicos")
@@ -42,9 +42,9 @@ class Medico:
             conn.close
             return[Medico(**r) for r in resultados]
 
-     @staticmethod
-     def buscar_por_id(id):
-        conn = conectar()
+    @staticmethod
+    def buscar_por_id(id):
+        conn = conectBD()
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute("SELECT * FROM medicos WHERE id = %s",(id,))
@@ -54,14 +54,15 @@ class Medico:
         conn.close()
 
      
-     def deletar(self):
+    def deletar(self):
             if self.id is not None:
-                conn = conectar()
+                conn = conectBD()
                 cursor = conn.cursor()
                 cursor.execute("DELETE FROM medicos WHERE id = %s",(self.id))    
                 conn.commit()
+          
             cursor.close()
-                conn.close
+            conn.close()
              
     
 

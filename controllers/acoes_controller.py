@@ -1,7 +1,10 @@
 from views.acoes_view import TelaAcoes
 from views.clientes_view import TelaCadastroCliente 
 from controllers.cliente_controller import ClienteController 
+from controllers.medico_controller import MedicoController
+from views.medicos_view import TelaCadastroMedico
 import tkinter as tk
+from views.imc_view import TelaIMC
 
 class AcoesController:
     def __init__(self, root):
@@ -23,10 +26,20 @@ class AcoesController:
         controller.iniciar_tela()
 
     def abrir_cadastro_medico(self):
-        pass
+        cadastro_window = tk.Toplevel(self.root)
+        cadastro_window.attributes('-fullscreen', True)
+        
+        controller = MedicoController (cadastro_window)
+        
+        cadastro_window.master = self.root 
+        self.root.withdraw()  
+    
+        controller.iniciar_tela()
 
     def abrir_calcula_imc(self):
-        pass
+        TelaIMC(self.root)
+        self.root.withdraw()  
+    
 
     def abrir_medir_pressao(self):
         pass
