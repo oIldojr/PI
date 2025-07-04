@@ -40,7 +40,7 @@ class TelaAcoes:
             ("Cadastrar Médico", self.controller.abrir_cadastro_medico),
             ("Calcular IMC", self.controller.abrir_calcula_imc),
             ("Medir Pressão", self.controller.abrir_medir_pressao),
-            ("Medir Hemoglobina", self.controller.abrir_medir_hemoglkobina),
+            ("Medir Hemoglobina", self.controller.abrir_medir_hemoglobina),
             ("Visualizar Dashboard", self.controller.abrir_dashboard)
         ]
         
