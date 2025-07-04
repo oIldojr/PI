@@ -3,6 +3,8 @@ from views.clientes_view import TelaCadastroCliente
 from controllers.cliente_controller import ClienteController 
 from controllers.medico_controller import MedicoController
 from views.medicos_view import TelaCadastroMedico
+from controllers.pressao_controller import PressaoController
+from controllers.hemoglobina_controller import HemoglobinaController
 import tkinter as tk
 from views.imc_view import TelaIMC
 
@@ -42,10 +44,26 @@ class AcoesController:
     
 
     def abrir_medir_pressao(self):
-        pass
+        cadastro_window = tk.Toplevel(self.root)
+        cadastro_window.attributes('-fullscreen', True)
+        
+        controller = PressaoController (cadastro_window)
+        
+        cadastro_window.master = self.root 
+        self.root.withdraw()  
+    
+        controller.iniciar_tela()
 
     def abrir_medir_hemoglobina(self):
-        pass
+        cadastro_window = tk.Toplevel(self.root)
+        cadastro_window.attributes('-fullscreen', True)
+        
+        controller = HemoglobinaController (cadastro_window)
+        
+        cadastro_window.master = self.root 
+        self.root.withdraw()  
+    
+        controller.iniciar_tela()
 
     def abrir_dashboard(self):
         pass
