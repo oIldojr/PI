@@ -50,7 +50,7 @@ class AcoesController:
         
         controller = PressaoController(cadastro_window)
         
-        cadastro_window.master = self.root 
+        cadastro_window.master = self.root
         self.root.withdraw()  
         
         controller.iniciar_tela() 
@@ -59,7 +59,18 @@ class AcoesController:
         cadastro_window.focus_force()
 
     def abrir_medir_hemoglobina(self):
-        pass
+        cadastro_window = tk.Toplevel(self.root)
+        cadastro_window.attributes('-fullscreen', True)
+        
+        controller = HemoglobinaController(cadastro_window)
+        
+        cadastro_window.master = self.root 
+        self.root.withdraw()  
+        
+        controller.iniciar_tela() 
+        
+        cadastro_window.lift()
+        cadastro_window.focus_force()
 
     def abrir_dashboard(self):
         pass
