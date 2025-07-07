@@ -23,6 +23,7 @@ class TelaIMC:
         tk.Entry(self.frame, textvariable=self.altura_var).pack(pady=20)
 
         tk.Button(self.frame, text="Calcular IMC", command=self.calcular_imc).pack(pady=10)
+        tk.Button(self.frame, text="Sair", command=self.root.destroy).pack(pady=30)
 
     
     def calcular_imc(self):

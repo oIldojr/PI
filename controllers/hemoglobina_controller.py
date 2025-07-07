@@ -6,4 +6,4 @@ class HemoglobinaController:
           self.view = TelaHemoglobina(self.root,self)
     
     def iniciar_tela(self):
-        self.view_mostrar()
+        self.view.mostrar()

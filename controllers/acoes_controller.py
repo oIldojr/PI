@@ -5,6 +5,7 @@ from controllers.medico_controller import MedicoController
 from views.medicos_view import TelaCadastroMedico
 from controllers.pressao_controller import PressaoController
 from controllers.hemoglobina_controller import HemoglobinaController
+from controllers.dashboard_controller import DashboardController
 import tkinter as tk
 from views.imc_view import TelaIMC
 
@@ -73,4 +74,15 @@ class AcoesController:
         cadastro_window.focus_force()
 
     def abrir_dashboard(self):
-        pass
+        cadastro_window = tk.Toplevel(self.root)
+        cadastro_window.attributes('-fullscreen', True)
+        
+        controller = DashboardController(cadastro_window)
+        
+        cadastro_window.master = self.root 
+        self.root.withdraw()  
+        
+        controller.iniciar_tela() 
+        
+        cadastro_window.lift()
+        cadastro_window.focus_force()

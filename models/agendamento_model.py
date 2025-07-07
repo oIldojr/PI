@@ -1,4 +1,4 @@
-from db import conectBD
+from models.db import conectBD
 
 
 class Agendamento:
